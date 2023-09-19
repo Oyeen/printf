@@ -1,1 +1,1 @@
-raedme file for printf project
+read me file for printf project
