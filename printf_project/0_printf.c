@@ -74,23 +74,10 @@ int to_print_string(va_list args, char buffer[],
 
 /**
  * to_print_percent - prints a pecent sign
- * @args: list of arguments
- * @buffer: Buffer array to handle print
- * @flags: Claculates active flags
- * @width: get width
- * @precision: recision specification
- * @size: Size specifier
  * Return: Number char printed
  */
 
-int to_print_percent(va_list args, char buffer[],
-		int flags, int width, int precision, int size)
+int to_print_percent(void)
 {
-	UNUSED(args);
-	UNUSED(buffer);
-	UNUSED(flags);
-	UNUSED(width);
-	UNUSED(precision);
-	UNUSED(size);
 	return (write(1, "%%", 1));
 }
