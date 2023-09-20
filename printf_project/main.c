@@ -1,6 +1,5 @@
 #include "main.h"
 #include <stdio.h>
-#include <limits.h>
 
 /**
  * main - entry point
@@ -9,6 +8,9 @@
 
 int main(void)
 {
-	printf("Hello! %s, My favorite character is %c", "Alice", 'H');
+	_printf("Mary\n");
+	_printf("%c\n", 'H');
+	_printf("%s\n", "name");
+	_printf("%%\n");
 	return (0);
 }

@@ -9,52 +9,52 @@
  */
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int count;
+	int variable;
 	char ch;
-	const char *str;
+	char *str;
+	va_list list;
 
-	va_start(args, format);
-	count = 0;
-	while (*format != '\0')
+	variable = 0;
+
+	if (format == NULL)
+		return (-1);
+	va_start(list, format);
+	while (*format)
 	{
-		if (*format == '%')
+		if (*format != '%')
 		{
-			format++;
-			switch (*format)
-			{
-				case 'c':
-					ch = (char) va_arg(args, int);
-					putchar(ch);
-					count++;
-					break;
-				case 's':
-					str = va_arg(args, const char *);
-					while (*str != '\0')
-					{
-						putchar(*str);
-						str++;
-						count++;
-					}
-					break;
-				case '%':
-					putchar('%');
-					count++;
-					break;
-				default:
-					putchar('%');
-					putchar(*format);
-					count += 2;
-					break;
-			}
+			putchar(*format);
+			variable++;
 		}
 		else
 		{
-			putchar(*format);
-			count++;
+			format++;
+			if (*format == '\0')
+				break;
+			if (*format == '%')
+			{
+				putchar('%');
+				variable++;
+			}
+			else if (*format == 'c')
+			{
+				ch = va_arg(list, int);
+				putchar(ch);
+				variable++;
+			}
+			else if (*format == 's')
+			{
+				str = va_arg(list, char *);
+				while (*str)
+				{
+					putchar (*str);
+					str++;
+					variable++;
+				}
+			}
 		}
 		format++;
 	}
-	va_end(args);
-	return (count);
+	va_end(list);
+	return (variable);
 }
