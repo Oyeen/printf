@@ -9,7 +9,7 @@
  */
 int _printf(const char *format, ...)
 {
-	int variable;
+	int variable, integer;
 	char ch;
 	char *str;
 	va_list list;
@@ -51,6 +51,12 @@ int _printf(const char *format, ...)
 					str++;
 					variable++;
 				}
+			}
+			else if (*format == 'd' || *format == '1')
+			{
+				integer = va_arg(list, int);
+				printf("%d", integer);
+				variable++;
 			}
 		}
 		format++;
